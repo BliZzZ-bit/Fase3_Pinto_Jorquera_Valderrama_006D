@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Eliminar receta</h1>
+
+    <p>¿Estas seguro de eliminar la receta: {{ receta }}? </p>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" action="" value="Si, eliminar" />
+    </form>
+    <div class="botones">
+        <a href="{{ receta.get_absolute_url }}" class="btn btn-info">Atras</a>
+    </div> 
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock %}

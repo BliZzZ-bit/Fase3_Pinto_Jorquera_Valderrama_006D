@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Receta: {{ receta }} </h1>
+    <img src={{receta.imagen}}>
+    <p>{{receta.receta}}</p>
+    <p>{{receta.autor}}</p>
+
+    {% if user.is_authenticated  %}
+        <div class="botones">
+            <a href="{% url 'receta_delete' receta.pk %}" class="btn btn-info">Eliminar receta</a>
+            <a href="{% url 'receta_update' receta.pk %}" class="btn btn-info">Actualizar receta</a>
+        </div>
+    {% endif %}<br>
+    <div class="botones">
+        <a href="{% url 'recetas' %}" class="btn btn-info">Atras</a>
+    </div> 
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+{% endblock %}    

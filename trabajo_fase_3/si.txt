@@ -1,0 +1,6 @@
+30/11
+Test de formulario y vistas
+1 error en test_view
+1 fallo test_form
+form.py añadido en trabajofase2/web
+update en autor_form.html {{form.as_table}} ----> {{form.as_p}}

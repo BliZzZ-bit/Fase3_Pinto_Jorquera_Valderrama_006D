@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Autor: {{ autor }} </h1><br>
+    <p>{{autor.fechanac}}-{% if autor.fechamuerte %}{{autor.fechamuerte}}{% endif %} </p><br>
+
+    <div class="botones">
+        <a href="{% url 'autor_delete' autor.pk %}" class="btn btn-info">Eliminar autor</a>
+        <a href="{% url 'autor_update' autor.pk %}" class="btn btn-info">Actualizar autor</a>
+    </div><br>
+    <div class="botones">
+        <a href="{% url 'autores' %}" class="btn btn-info">Atras</a>
+    </div> 
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+{% load static %}
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  </style>
+
+{% if autor_list %}
+    <div style="width: 60%;">
+        <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Fecha de defunción</th>
+                </tr>
+
+                {% for autor in autor_list %}
+                    
+                        <tr>
+                            {% if user.is_authenticated %}
+                            <td><a href="{{autor.get_absolute_url}}">{{ autor.pnombre }}</a></td>
+                            {% else %}}
+                            <td>{{ autor.pnombre }}</td>
+                            {% endif %}
+                            <td>{{ autor.papellido }}</td>
+                            <td>{{ autor.fechanac }}</td>
+                            <td>{{ autor.fechamuerte }}</td>
+                        </tr>
+                
+                    
+                {% endfor %}
+
+        </table>
+
+        <br>
+
+        {% if is_paginated %}
+          <ul class="pagination">
+          {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+
+          {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+          </ul>
+        {% endif %}
+
+    </div>
+    {% else %}
+        <p>No hay autores ingresados</p>
+
+    {% endif %}
+    {% if user.is_authenticated  %}
+      <div class="botones">
+        <a href="{% url 'autor_create' %}" class="btn btn-info">Añadir autor</a>
+      </div>  
+    {% endif %}
+
+
+{% endblock %}

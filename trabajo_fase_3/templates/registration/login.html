@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+{% load static %}
+<body class="text-center"><br><br>
+
+  <img class="mb-4" src="{% static 'img/icon.jpg' %}" alt="" width="100" height="100">
+  <h1 class="h3 mb-3 font-weight-bold">Usuario Toffee</h1><br>
+  <div class="container">
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="Nombre de usuario">Usuario:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ form.username }}</label><br>
+      <label for="Contraseña">Contraseña: {{ form.password }}</label><br><br><br>
+      
+      
+      
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+  </div>
+</body><br><br><br><br><br><br><br><br>
+{% endblock %}
